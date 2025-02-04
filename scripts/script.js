@@ -38,35 +38,6 @@ function catchPokemon(event) {
     }
 }
 
-/*
-for (let i = 0; i < pokemon.length; i++) {
-    randomPokemon(pokemon[i]);
-}
-
-//Pokémon fångas när spelaren hovrar över den med musen
-pokemon.addEventListener("click", catchPokemon);
-
-function catchPokemon(){
-
-        pokemon.src = "assets/ball.webp" 
-    
-}*/
-
-
-/*
-Togglar mellan pokémon och pokéboll
-
-function catchPokemon() {
-    if (pokeball.src.endsWith("assets/pokemons/001.png")) {
-        pokeball.src = "assets/ball.webp";
-    } else {
-        pokeball.src = "assets/pokemons/001.png";
-    }
-}
-*/
-
-
-
 prepGame()
 
 function prepGame() {
