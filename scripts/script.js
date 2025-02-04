@@ -69,18 +69,16 @@ function catchPokemon() {
 
 prepGame()
 
-function prepGame(){
+function prepGame() {
     let startClick = document.getElementById('submitBtn');
-    startClick.addEventListener("click",  function(){
-        event.preventDefault();
-        validateForm()
-
+    startClick.addEventListener("click", function(event) {
+        event.preventDefault(); // Stoppar sidans omladdning
+        validateForm();
     });
 }
 
 function initiateGame(){
     playGameMusic();
-
 }
 
 let gameMusic = new Audio("assets/pokemon_vs_trainer.mp3");
@@ -96,21 +94,9 @@ function validateForm(){
     if (validateName() && validateAge() && validateGender()){
         alert('Välkommen till spelet!');
         initiateGame();
-
     }
 }
 
-
-        validateForm()
-    });
-}
-
-
-function validateForm(){
-    if (validateName() && validateAge() && validateGender()){
-        alert('Välkommen till spelet!');// 
-    }
-}
 
 
 function validateName (){
@@ -145,21 +131,10 @@ function validateAge(){
     }
     return true;
 
-    let age = document.getElementById('age').value;
-
-    if (age <10){
-        alert('Du måste vara minst 10 år för att spela');
-        return false;
-    }
-    else if (age >15){
-        alert('Du får inte vara äldre än 15 år');
-        return false;
-    }
-    else{
-        return true;
-    }
-
 }
+
+    
+
 
 function validateGender() {
     let isBoy = document.getElementById('boy').checked;
@@ -171,4 +146,4 @@ function validateGender() {
     }
     return true;
 
-
+}
