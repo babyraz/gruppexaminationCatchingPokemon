@@ -9,6 +9,7 @@
 img {
     width: 300px;
     transition: all 3s linear;
+
 }
 
 
@@ -76,3 +77,4 @@ input {
 .game-field {
     display: none;
 }
+
