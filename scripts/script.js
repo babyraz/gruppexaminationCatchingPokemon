@@ -33,6 +33,19 @@ function validateForm(){
     }
 }
 
+
+        validateForm()
+    });
+}
+
+
+function validateForm(){
+    if (validateName() && validateAge() && validateGender()){
+        alert('Välkommen till spelet!');// 
+    }
+}
+
+
 function validateName (){
     let namn = document.getElementById('nick').value.length;
     if (namn <5) {
@@ -49,6 +62,7 @@ function validateName (){
 }
 
 function validateAge(){
+
     let age = parseInt(document.getElementById('age').value); 
 
     
@@ -63,6 +77,21 @@ function validateAge(){
         return false;
     }
     return true;
+
+    let age = document.getElementById('age').value;
+
+    if (age <10){
+        alert('Du måste vara minst 10 år för att spela');
+        return false;
+    }
+    else if (age >15){
+        alert('Du får inte vara äldre än 15 år');
+        return false;
+    }
+    else{
+        return true;
+    }
+
 }
 
 function validateGender() {
@@ -74,4 +103,4 @@ function validateGender() {
         return false;
     }
     return true;
-}
+
