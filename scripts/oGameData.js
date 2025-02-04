@@ -31,16 +31,19 @@ const oGameData = {
     },
     // Metod som hämtar antalet millisekunder sedan 1 januari 1970 och placerar värdet i beginning attributet
     startTimeInMilliseconds : function() {
+
+        this.beginning =  Date.now();
+
     
         this.startTime =  Date.now();
 
         this.beginning =  Date.now();
         
+
     },
 
     // Metod som hämtar antalet millisekunder sedan 1 januari 1970 och placerar värdet i ending attributet
     endTimeInMilliseconds : function() {
-        feature-Spemusik
         this.endTime = Date.now();
     },
 
@@ -54,6 +57,6 @@ const oGameData = {
     // Metod som räknar ut och returnerar antalet millisekunder det tog att fånga alla 10 pokemons
     nmbrOfMilliseconds: () => {
         return this.ending - this.beginning;
- dev
+
     }
 }
