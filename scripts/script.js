@@ -48,9 +48,49 @@ function prepGame() {
     });
 }
 
-function initiateGame(){
-    playGameMusic();
+// Placerar ut pokemon random på spelplanen
+function placePokemonRandomly() {
+    // slumpmässiga värden för positionerna
+    const gameFieldWidth = gameField.clientWidth; // Bredd på spelplanen
+    const gameFieldHeight = gameField.clientHeight; // Höjd på spelplanen
+
+    console.log("Game field width:", gameFieldWidth); // Felsökning
+    console.log("Game field height:", gameFieldHeight); // Felsökning
+
+    const pokemonWidth = 200;
+    const pokemonHeight = 200;
+
+    pokemon.forEach(pokemon => {
+        const randomX = Math.floor(Math.random() * (gameFieldWidth - pokemonWidth));
+        const randomY = Math.floor(Math.random() * (gameFieldHeight - pokemonHeight));
+
+        // Sätt pokemonens position
+        pokemon.style.left = `${randomX}px`;
+        pokemon.style.top = `${randomY}px`;
+});
 }
+
+// Funktion för att byta plats slumpmässigt
+function updatePokemonPositions() {
+    setInterval(placePokemonRandomly, 3000); // Uppdatera var tredje sekund
+}
+
+const formWrapper = document.getElementById('formWrapper');
+const gameField = document.getElementById('gameField');
+const pokemonImages = document.getElementById('pokemonimgs')
+
+
+function initiateGame() {
+    playGameMusic();
+    formWrapper.classList.add('d-none'); // Göm formuläret
+    gameField.classList.remove('d-none'); // Visa spelplanen
+    pokemonImages.classList.remove('d-none');
+
+    placePokemonRandomly();
+    updatePokemonPositions();
+
+}
+
 
 let gameMusic = new Audio("assets/pokemon_vs_trainer.mp3");
 
