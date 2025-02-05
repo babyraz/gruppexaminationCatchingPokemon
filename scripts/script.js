@@ -78,7 +78,8 @@ function updatePokemonPositions() {
 
 const formWrapper = document.getElementById('formWrapper');
 const gameField = document.getElementById('gameField');
-const pokemonImages = document.getElementById('pokemonimgs')
+const pokemonImages = document.getElementById('pokemonimgs');
+const showHighScore = document.getElementById('highScore');
 
 
 function initiateGame() {
@@ -95,10 +96,9 @@ function initiateGame() {
 
 let gameMusic = new Audio("assets/pokemon_vs_trainer.mp3");
 
-
 function playGameMusic(){
     gameMusic.loop = true; // Gör att musiken loopas
-    gameMusic.volume = 0.5; // Justera volymen om det behövs (0.0 - 1.0)
+    gameMusic.volume = 0.2; // Justera volymen om det behövs (0.0 - 1.0)
     gameMusic.play().catch(error => console.log("Kunde inte spela upp musiken:", error));
 }
 
@@ -106,8 +106,15 @@ function playGameMusic(){
 function checkGameOver() {
     const allCaught = Array.from(pokemon).every(poke => poke.src.endsWith("ball.webp")); //Kontrollerar så att alla bilder i Pokemon-noden har en src som slutar med ball.webp
     if (allCaught) {
-        alert("Grattis, du har fångat alla Pokémon!");
+        setTimeout(() => {
         gameMusic.pause();
+
+        pokemonImages.classList.add('d-none');
+        gameField.classList.add('d-none');
+        showHighScore.classList.remove('d-none');
+
+        console.log("Highscore visas, klasser:", showHighScore.classList);
+    }, 100);
     }
 }
 
