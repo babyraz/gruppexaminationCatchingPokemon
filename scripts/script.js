@@ -175,3 +175,8 @@ function validateGender() {
     return true;
 
 }
+
+// Laddar om sidan när spelaren trycker på Spela igen-knappen
+document.getElementById("playAgainBtn").addEventListener("click", function() {
+    location.reload();
+});
