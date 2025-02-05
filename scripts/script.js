@@ -35,6 +35,7 @@ function catchPokemon(event) {
         }
     } else {
         hoveredImg.src = "assets/ball.webp"; // Ändra till pokeboll
+        checkGameOver(); //Kontrollera om spelet är slut
     }
 }
 
@@ -53,9 +54,6 @@ function placePokemonRandomly() {
     // slumpmässiga värden för positionerna
     const gameFieldWidth = gameField.clientWidth; // Bredd på spelplanen
     const gameFieldHeight = gameField.clientHeight; // Höjd på spelplanen
-
-    console.log("Game field width:", gameFieldWidth); // Felsökning
-    console.log("Game field height:", gameFieldHeight); // Felsökning
 
     const pokemonWidth = 200;
     const pokemonHeight = 200;
@@ -77,7 +75,8 @@ function updatePokemonPositions() {
 
 const formWrapper = document.getElementById('formWrapper');
 const gameField = document.getElementById('gameField');
-const pokemonImages = document.getElementById('pokemonimgs')
+const pokemonImages = document.getElementById('pokemonimgs');
+const showHighScore = document.getElementById('highScore');
 
 
 function initiateGame() {
@@ -86,19 +85,50 @@ function initiateGame() {
     gameField.classList.remove('d-none'); // Visa spelplanen
     pokemonImages.classList.remove('d-none');
 
+    startTimer();
+
     placePokemonRandomly();
     updatePokemonPositions();
+
 
 }
 
 
 let gameMusic = new Audio("assets/pokemon_vs_trainer.mp3");
 
-
 function playGameMusic(){
     gameMusic.loop = true; // Gör att musiken loopas
-    gameMusic.volume = 0.5; // Justera volymen om det behövs (0.0 - 1.0)
+    gameMusic.volume = 0.2; // Justera volymen om det behövs (0.0 - 1.0)
     gameMusic.play().catch(error => console.log("Kunde inte spela upp musiken:", error));
+}
+
+//Kollar om alla Pokémons är i pokebollar för att avsluta spelet
+function checkGameOver() {
+    const allCaught = Array.from(pokemon).every(poke => poke.src.endsWith("ball.webp"));
+    if (allCaught) {
+        stopTimer(); // Stoppa timern
+        saveHighScore(); // Spara highscore
+        setTimeout(() => {
+            gameMusic.pause(); // Stoppa musiken
+            pokemonImages.classList.add('d-none'); // Dölj Pokémon-bilderna
+            gameField.classList.add('d-none'); // Dölj spelplanen
+            showHighScore.classList.remove('d-none'); // Visa highscore-sidan
+        }, 200); // Ge lite mer tid för att säkerställa att allting stängs av ordentligt
+    }
+}
+
+let timer = 0;
+let timerInterval;
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        timer += 0.1; // Öka med 0.1 sekunder varje gång (100 ms)
+    }, 100); // Uppdatera varje 100 ms
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    timer = timer.toFixed(4); // Visa 4 decimaler när spelet är slut
 }
 
 function validateForm(){
@@ -106,6 +136,27 @@ function validateForm(){
         alert('Välkommen till spelet!');
         initiateGame();
     }
+}
+
+function saveHighScore() {
+    let highScore = JSON.parse(localStorage.getItem('highScores')) || [];
+    highScore.push(Number(timer)); // Lägg till den aktuella timern
+    highScore.sort((a, b) => a - b); // Sortera i stigande ordning
+    highScore = highScore.slice(0, 5); // Behåll bara de 5 bästa tiderna
+    localStorage.setItem('highScores', JSON.stringify(highScore));
+    displayHighScores(); // Visa uppdaterad highscore
+}
+
+function displayHighScores() {
+    const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+    const highscoreList = document.getElementById('highscoreList');
+    highscoreList.innerHTML = ''; // Töm listan
+
+    highScores.forEach((score, index) => {
+        const li = document.createElement('li');
+        li.textContent = `Placering ${index + 1}: ${score.toFixed(4)}s`; // Visa med 4 decimaler
+        highscoreList.appendChild(li);
+    });
 }
 
 

@@ -100,3 +100,47 @@ input {
     width: 200px;
     height: 200px;
 }
+
+#highScore {
+    display:block !important;
+    border: 2px solid black;
+}
+
+.high-score {
+    display: block;
+    border: 2px solid black;
+    background-image: url('../assets/background.png');
+    background-size: cover;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.high-score h1{
+    font-family: "Poppins", serif;
+    font-size: 100px;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+}
+
+.high-score button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 3rem;
+    align-self: center;
+    font-family: "Amatic SC", serif;
+    font-size: 2rem;
+    font-weight: 800;
+    transition: background-color 1s;
+    justify-content: center;
+    text-align: center;
+}
