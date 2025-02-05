@@ -104,6 +104,7 @@ function playGameMusic(){
 
 //Kollar om alla Pokémons är i pokebollar för att avsluta spelet
 function checkGameOver() {
+
     const allCaught = Array.from(pokemon).every(poke => poke.src.endsWith("ball.webp"));
     if (allCaught) {
         stopTimer(); // Stoppa timern
@@ -129,6 +130,8 @@ function startTimer() {
 function stopTimer() {
     clearInterval(timerInterval);
     timer = timer.toFixed(4); // Visa 4 decimaler när spelet är slut
+
+
 }
 
 function validateForm(){
