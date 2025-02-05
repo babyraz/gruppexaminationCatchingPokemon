@@ -212,3 +212,11 @@ function validateGender() {
     return true;
 
 }
+
+// Laddar om sidan när spelaren trycker på Spela igen-knappen
+
+document.addEventListener("DOMContentLoaded", function() { // Väntar tills hela HTML-dokumentet har laddats och DOM-strukturen är redo innan JavaScript-koden körs.
+    document.getElementById("playAgainBtn").addEventListener("click", function() {
+        location.reload(); // Laddar om sidan när knappen klickas.
+    });
+});
