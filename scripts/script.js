@@ -90,7 +90,10 @@ function initiateGame() {
     placePokemonRandomly();
     updatePokemonPositions();
 
-
+    function updatePokemonPositions() {
+        placePokemonRandomly();
+        setInterval(placePokemonRandomly, 3000); // Uppdatera var tredje sekund
+    }
 }
 
 
