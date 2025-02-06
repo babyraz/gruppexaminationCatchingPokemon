@@ -127,17 +127,36 @@ input {
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: white;
 }
 
 .high-score h1{
     font-family: "Poppins", serif;
     font-size: 100px;
     color:white;
+    font-size: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 150px;
+}
+
+.high-score--styling {
+    background-color: rgba(0, 0, 0, 0.637);
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 1rem;
+    padding: 2rem;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highscore-list li {
+    margin-top: 0.6rem;
+    list-style: none;
+    font-family: "poppins", serif;
 }
 
 .high-score button {
@@ -150,6 +169,7 @@ input {
     font-family: "Amatic SC", serif;
     font-size: 2rem;
     font-weight: 800;
+    margin-top: 1rem;
     transition: background-color 1s;
     justify-content: center;
     text-align: center;
