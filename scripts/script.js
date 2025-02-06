@@ -114,7 +114,7 @@ function checkGameOver() {
         const formattedTime = parseFloat(timer).toFixed(1); // Avrundar tiden till en decimal
 
         // Visar en text med på hur lång tid spelaren fångade alla pokemons
-        document.getElementById('winMsg').innerText = `You caught all pokémons in ${formattedTime} seconds!`;
+        document.getElementById('winMsg').innerText = `You caught all pokémon in ${formattedTime} seconds!`;
 
         saveHighScore(); // Spara highscore
         setTimeout(() => {
