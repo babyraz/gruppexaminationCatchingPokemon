@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ser till så att bilderna får korrekt storlek och deras rörelse animeras */
+/* När ni sätter intervallen efter vilken pokemonen får sin nya position bör den intervallen överensstämma med tiden här. 3s. */
+img {
+    width: 300px;
+    transition: all 3s linear;
+}
+
+
+/* Styling av formuläret */
+
+.form-wrapper {
+    background-image: url('../assets/background.png');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", serif;
+}
+
+.form {
+    background-color: rgba(255, 255, 255, 0.575);
+    padding: 1rem;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+h3 {
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+}
+
+input {
+    margin-bottom: 0.5rem;
+    padding: 0.3rem;
+}
+
+.boyOrGirl {
+    margin-bottom: 0.5rem;
+}
+
+/*Styling av knappen som startar spelet */
+
+#submitBtn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.4rem;
+    width: 60%;
+    align-self: center;
+    font-family: "Amatic SC", serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    transition: background-color 1s;
+}
+
+#submitBtn:hover {
+    background-color: rgb(112, 0, 0);
+}
+
+/*Gömmer gamefield tills vidare*/
+
+.game-field {
+    display: none;
+}
+
+.d-none {
+    display:none !important;
+}
+
+#pokemonimgs {
+    height:100vh;
+    width:100vw;
+}
+
+#gameField {
+    position: relative;
+    width:100vw;
+    height:100vh;
+    overflow: hidden;
+    display:block;
+    background-image: url('../assets/arena-background.png');
+}
+
+.pokemon {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+}
+
+#winMsg {
+    font-family: "Poppins", serif;
+    font-size: 24px; 
+    font-weight: bold; 
+    color: white; 
+    text-align: center; 
+    margin-top: 20px; 
+    margin-bottom: 20px;
+}
+
+.high-score {
+    display: block;
+    border: 2px solid black;
+    background-image: url('../assets/background.png');
+    background-size: cover;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.high-score h1{
+    font-family: "Poppins", serif;
+    font-size: 100px;
+    color:white;
+    font-size: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.high-score--styling {
+    background-color: rgba(0, 0, 0, 0.637);
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 1rem;
+    padding: 2rem;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highscore-list li {
+    margin-top: 0.6rem;
+    list-style: none;
+    font-family: "poppins", serif;
+}
+
+.high-score button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 3rem;
+    align-self: center;
+    font-family: "Amatic SC", serif;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-top: 1rem;
+    transition: background-color 1s;
+    justify-content: center;
+    text-align: center;
+}
+
+.high-score button:hover {
+    background-color: rgb(112, 0, 0);
+}
