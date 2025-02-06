@@ -137,20 +137,23 @@ function startTimer() {
 
 function stopTimer() {
     clearInterval(timerInterval);
-    timer = timer.toFixed(1); // Visa 4 decimaler när spelet är slut
+    //timer = timer.toFixed(1); // Visa 4 decimaler när spelet är slut
 
 
 }
 
 function validateForm(){
     if (validateName() && validateAge() && validateGender()){
-        alert('Välkommen till spelet!');
+        
         initiateGame();
     }
 }
 
 function saveHighScore() {
     let highScore = JSON.parse(localStorage.getItem('highScores')) || [];
+    // Säkerställ att alla poäng är nummer
+    highScore = highScore.map(score => Number(score));
+
     highScore.push(Number(timer)); // Lägg till den aktuella timern
     highScore.sort((a, b) => a - b); // Sortera i stigande ordning
     highScore = highScore.slice(0, 10); // Behåll bara de 5 bästa tiderna
@@ -159,6 +162,7 @@ function saveHighScore() {
 }
 
 function displayHighScores() {
+    console.log(localStorage.getItem('highScores')) 
     const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
     const highscoreList = document.getElementById('highscoreList');
     highscoreList.innerHTML = ''; // Töm listan
