@@ -91,6 +91,7 @@ function initiateGame() {
     updatePokemonPositions();
 
 
+
 }
 
 
@@ -108,6 +109,11 @@ function checkGameOver() {
     const allCaught = Array.from(pokemon).every(poke => poke.src.endsWith("ball.webp"));
     if (allCaught) {
         stopTimer(); // Stoppa timern
+        const formattedTime = parseFloat(timer).toFixed(1); // Avrundar tiden till en decimal
+
+        // Visar en text med på hur lång tid spelaren fångade alla pokemons
+        document.getElementById('winMsg').innerText = `You caught all pokémons in ${formattedTime} seconds!`;
+
         saveHighScore(); // Spara highscore
         setTimeout(() => {
             gameMusic.pause(); // Stoppa musiken
