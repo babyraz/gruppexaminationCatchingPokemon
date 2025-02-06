@@ -111,11 +111,6 @@ input {
     margin-bottom: 20px;
 }
 
-#highScore {
-    display:block !important;
-    border: 2px solid black;
-}
-
 .high-score {
     display: block;
     border: 2px solid black;
