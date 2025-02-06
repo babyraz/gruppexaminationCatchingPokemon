@@ -137,7 +137,7 @@ function startTimer() {
 
 function stopTimer() {
     clearInterval(timerInterval);
-    timer = timer.toFixed(4); // Visa 4 decimaler när spelet är slut
+    timer = timer.toFixed(1); // Visa 4 decimaler när spelet är slut
 
 
 }
@@ -153,7 +153,7 @@ function saveHighScore() {
     let highScore = JSON.parse(localStorage.getItem('highScores')) || [];
     highScore.push(Number(timer)); // Lägg till den aktuella timern
     highScore.sort((a, b) => a - b); // Sortera i stigande ordning
-    highScore = highScore.slice(0, 5); // Behåll bara de 5 bästa tiderna
+    highScore = highScore.slice(0, 10); // Behåll bara de 5 bästa tiderna
     localStorage.setItem('highScores', JSON.stringify(highScore));
     displayHighScores(); // Visa uppdaterad highscore
 }
@@ -165,7 +165,7 @@ function displayHighScores() {
 
     highScores.forEach((score, index) => {
         const li = document.createElement('li');
-        li.textContent = `Placering ${index + 1}: ${score.toFixed(4)}s`; // Visa med 4 decimaler
+        li.textContent = `Placering ${index + 1}: ${score.toFixed(1)}s`; // Visa med 4 decimaler
         highscoreList.appendChild(li);
     });
 }
